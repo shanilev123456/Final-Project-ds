@@ -1,0 +1,33 @@
+<div class="form-section">
+    <form class="form-horizontal" (ngSubmit)="onSubmit()">
+      <div class="form-field">
+        <label for="city">Select a city:</label>
+        <select id="city" [(ngModel)]="selectedCity" name="city" required>
+          <option disabled selected value="">-- Select a city --</option>
+          <option *ngFor="let city of cityNames" [value]="city">{{ city }}</option>
+        </select>
+      </div>
+  
+      <div class="form-field">
+        <label for="neighborhood">Select a neighborhood:</label>
+        <select id="neighborhood" [(ngModel)]="selectedNeighborhood" name="neighborhood" [disabled]="!selectedCity" required>
+          <option disabled selected value="">-- Select a neighborhood --</option>
+          <option *ngFor="let n of neighborhoods" [value]="n">{{ n }}</option>
+        </select>
+      </div>
+  
+      <div class="form-field">
+        <label for="lotSize">Area size in square meters:</label>
+        <input id="lotSize" type="number" [(ngModel)]="lotSize" name="lotSize" placeholder="For exmple:250" required min="1" />
+      </div>
+  
+      <div class="form-field">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  
+    <div class="result" *ngIf="result">
+      {{ result }}
+    </div>
+  </div>
+  

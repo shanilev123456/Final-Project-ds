@@ -1,13 +1,24 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
+import { HeaderComponent} from './header/header.component';
+import { DidYouKnowComponent } from './did-you-know/did-you-know.component';
+import { SiteInfoButtonComponent } from './site-info-button/site-info-button.component';
+import { StartButtonComponent } from './start-button/start-button.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [CommonModule,RouterOutlet, HeaderComponent, DidYouKnowComponent,SiteInfoButtonComponent,StartButtonComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'my-app';
+  constructor(private router: Router) {}
+
+  get isHomePage(): boolean {
+    return this.router.url === '/';
+  }
+  
 }

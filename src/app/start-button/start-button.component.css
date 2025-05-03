@@ -1,0 +1,20 @@
+.start-container {
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  .start-btn {
+    background-color: #eb8825;
+    color: white;
+    padding: 12px 24px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .start-btn:hover {
+    background-color: #c96b1a;
+  }
+  

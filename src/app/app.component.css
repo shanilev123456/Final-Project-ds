@@ -1,0 +1,53 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.background-wrapper {
+  width: 100vw;
+  min-height: 100vh;
+  background-image: url('/assets/city-view.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  box-sizing: border-box;
+  flex-direction: row;
+}
+
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1600px;
+}
+
+/* אזור מרכזי עם כותרת וכפתורים */
+.center-content {
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  flex: 1;
+  gap: 10px;
+  text-align: center;
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 2;
+}
+
+
+.did-you-know-container {
+  display: flex;
+  justify-content: flex-end;
+  top: 40px;
+  right: 0;
+}
