@@ -2,13 +2,14 @@
 .layout-container {
   display: flex;
   flex-direction: row;
-  gap: 32px;
+  gap: 50px;
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
-  padding: 20px;
-   margin-top: -40px; 
-  min-height: 700px; /* חשוב כדי שהתוצאה לא תיחתך */
+  flex:1;
+  min-height: 700px; 
+  height: 300px;
+  min-height: 200px;
 }
 
 /* צד ימין: טופס + תוצאה */
@@ -17,9 +18,9 @@
   flex-direction: column;
   justify-content: flex-start;
   width: 90%;
-  max-width: 680px;
   min-width: 600px;
   gap: 10px;
+  max-width: 710px;
 }
 
 /* טופס */
@@ -83,7 +84,7 @@ button[type="submit"]:hover {
 /* תוצאה */
 .result-wrapper {
   margin-top: 16px;
-  min-height: 50px; /* מבטיח שהתוצאה תופיע ולא תיחתך */
+  min-height: 50px; 
 }
 
 .result {
@@ -100,10 +101,12 @@ button[type="submit"]:hover {
 
 /* מפה */
 .map-container {
-  width: 400px;
-  height: 400px;
+  display: flex;
+  width: 300px;
+  height: 300px;
   flex-shrink: 0;
   position: relative;
+  justify-content: flex-end;
 }
 
 app-interactive-map {

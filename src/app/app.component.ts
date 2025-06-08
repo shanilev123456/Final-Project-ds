@@ -5,12 +5,13 @@ import { DidYouKnowComponent } from './did-you-know/did-you-know.component';
 import { SiteInfoButtonComponent } from './site-info-button/site-info-button.component';
 import { StartButtonComponent } from './start-button/start-button.component';
 import { CommonModule } from '@angular/common';
-import { InteractiveMapComponent } from './interactive-map/interactive-map.component';
+import { PredictionFactorsComponent } from './prediction-factors/prediction-factors.component';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule,RouterOutlet, HeaderComponent,StartButtonComponent,SiteInfoButtonComponent,DidYouKnowComponent,InteractiveMapComponent],
+  imports: [CommonModule,RouterOutlet, HeaderComponent,StartButtonComponent,SiteInfoButtonComponent,DidYouKnowComponent,PredictionFactorsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

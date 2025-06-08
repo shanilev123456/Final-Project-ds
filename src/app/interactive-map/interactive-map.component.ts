@@ -1,58 +1,47 @@
-import { Component, AfterViewInit, Input, OnChanges } from '@angular/core';
-import * as L from 'leaflet';
+import { Component, Input, OnChanges } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-interactive-map',
   standalone: true,
+  imports: [GoogleMapsModule, CommonModule],
   templateUrl: './interactive-map.component.html',
   styleUrls: ['./interactive-map.component.css']
 })
-export class InteractiveMapComponent implements AfterViewInit, OnChanges {
+export class InteractiveMapComponent implements OnChanges {
   @Input() city: string = '';
   @Input() neighborhood: string = '';
 
-  private map!: L.Map;
-  private markersLayer = L.layerGroup();
+  center: google.maps.LatLngLiteral = { lat: 31.7683, lng: 35.2137 };
+  zoom = 14;
+  markerPosition: google.maps.LatLngLiteral = this.center;
+  apiKey = 'AIzaSyBUZQRM15TvWf7r2eC03QMfwOpylf5EHbc';
+  showMarker = false;
 
-  ngAfterViewInit(): void {
-    this.map = L.map('map').setView([31.7683, 35.2137], 9);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(this.map);
-
-    this.markersLayer.addTo(this.map);
-
-    setTimeout(() => this.map.invalidateSize(), 300); // חיוני לתיקון טעינה
-  }
+  constructor(private http: HttpClient) {}
 
   ngOnChanges(): void {
-    if (this.city && this.neighborhood && this.map) {
-      this.showLocation(this.city, this.neighborhood);
+    if (this.city && this.neighborhood) {
+      const fullAddress = `${this.neighborhood}, ${this.city}, Israel`;
+      this.geocodeAddress(fullAddress);
     }
   }
 
-  private async showLocation(city: string, neighborhood: string) {
-  this.markersLayer.clearLayers();
-
-  const fullAddress = `${neighborhood}, ${city}, Israel`;
-  const coordinates = await this.geocode(fullAddress);
-  if (!coordinates) return;
-
-  const marker = L.marker(coordinates).bindPopup(`<b>${neighborhood}</b><br>${city}`).openPopup();
-  this.markersLayer.addLayer(marker);
-  this.map.setView(coordinates, 14);
-
-  // ✅ תוספת שמוודאת שהמפה תתעדכן לגמרי בתוך המסגרת
-  setTimeout(() => this.map.invalidateSize(), 0);
-}
-
-  private async geocode(address: string): Promise<[number, number] | null> {
-    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
-    const response = await fetch(url);
-    const data = await response.json();
-    if (!data.length) return null;
-    return [parseFloat(data[0].lat), parseFloat(data[0].lon)];
-    
+  private geocodeAddress(address: string): void {
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${this.apiKey}`;
+    this.http.get<any>(url).subscribe(res => {
+      const result = res.results?.[0];
+      if (result) {
+        const location = result.geometry.location;
+        this.center = { lat: location.lat, lng: location.lng };
+        this.markerPosition = { lat: location.lat, lng: location.lng };
+        this.showMarker = true;
+      } else {
+        console.warn('⚠️ לא נמצאה כתובת מתאימה');
+        this.showMarker = false;
+      }
+    });
   }
 }

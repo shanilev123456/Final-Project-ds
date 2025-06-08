@@ -1,16 +1,30 @@
 <div class="background-wrapper">
   <div class="main-content">
+
+    <!-- צד שמאל -->
     <div class="center-content">
-      <app-header></app-header>
-      <ng-container *ngIf="isHomePage">
-        <div class="buttons-container">
-          <app-site-info-button></app-site-info-button>
-          <app-start-button></app-start-button>
-        </div>
-      </ng-container>
+      <div class="h">
+        <app-header></app-header>
+      </div>
+    <ng-container *ngIf="isHomePage">
+  <!-- עטיפה לשורה: כפתורים + גרף -->
+  <div class="buttons-and-chart">
+    <div class="buttons-container">
+      <app-site-info-button></app-site-info-button>
+      <app-start-button></app-start-button>
+    </div>
+
+    <div class="canva">
+      <app-prediction-factors></app-prediction-factors>
+    </div>
+  </div>
+</ng-container>
+
+
       <router-outlet></router-outlet>
     </div>
 
+    <!-- צד ימין -->
     <ng-container *ngIf="isHomePage">
       <div class="did-you-know-container">
         <app-did-you-know></app-did-you-know>
