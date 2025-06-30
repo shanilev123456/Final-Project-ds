@@ -11,7 +11,7 @@ This project is an end-to-end solution for predicting land prices (price per squ
 - [Modeling & Training](#modeling--training)
 - [Evaluation](#evaluation)
 - [Prediction API & Usage](#prediction-api--usage)
-- 
+
 ---
 
 ## Project Overview
@@ -30,12 +30,13 @@ The pipeline includes:
 
 ## Data Collection
 
-1. **Scraping Israel Land Authority Tenders:**  
+1. **Scraping Israel Land Authority Tenders:**
+
    - Uses Selenium to automate advanced search and scrape all relevant lots (מכרזים) and attributes.
    - Extracted fields: region, city, purpose, status, area, final price, development cost, winner, date fields, etc.
 
-2. **Geocoding Blocks:**  
-   - For each unique "Block" (גוש), govmap.gov.il is queried to fetch (X, Y) coordinates.
+2. **Geocoding Blocks:**
+   - For each unique "Block", govmap.gov.il is queried to fetch (X, Y) coordinates.
    - Coordinates are used for further spatial enrichment.
 
 ---
