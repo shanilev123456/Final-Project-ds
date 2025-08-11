@@ -1,0 +1,36 @@
+<h2>About the Website</h2>
+<div class="info-layout">
+  <div class="main-card info-card">
+    <p>
+      This website uses a <strong>Fully Connected Neural Network (FCNN)</strong>, built with PyTorch,
+      to predict the price of land per square meter based on location and size.
+    </p>
+    <p>
+      The model was trained on structured data including city, neighborhood, lot size,
+      and additional geographic features like proximity to the sea, public transport, parks, malls, and more.
+      Inputs are normalized and one-hot encoded.
+    </p>
+    <p>
+      By clicking the <strong>Start</strong> button, you’ll be taken to a page where you can enter
+      the city, neighborhood, and lot size. The model will estimate the land price in that specific area.
+    </p>
+  </div>
+
+    <div class="side-card info-card">
+      <h3>📊 Model Accuracy</h3>
+      <p>
+        The model achieves an <strong>average error rate of just 16%</strong> — showing high predictive performance!
+        In the "Rakafot" neighborhood in Be’er Sheva, the prediction differed by only <strong>0.1 ILS</strong>!
+      </p>
+    </div>
+
+    <div class="side-card info-card fact-card">
+      <h3>💡 Interesting Fact</h3>
+      <p>
+        The highest land prices were found in <em>Atlit – Ein Carmel</em>,
+        while the lowest were in <em>Arad – Rannanim</em> and <em>Netivot</em> — 
+        showing a big gap in land values across Israel.
+      </p>
+    </div>
+</div>
+<a routerLink="/" class="back-link">← Back to home</a>

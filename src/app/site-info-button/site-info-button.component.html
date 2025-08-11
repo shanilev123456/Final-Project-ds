@@ -1,16 +1,5 @@
 <div class="site-info-container">
-  <button (click)="toggleInfo()" class="info-btn">
+  <button class="info-btn" [routerLink]="['/site-info']">
     Click here for more information
   </button>
-
-  <div class="info-bubble" [class.hidden]="!showInfo">
-    <ng-container *ngIf="showInfo">
-      <h4>👋 Welcome!</h4>
-      <p>
-        The site allows you to check land values ​​in localities in the south by city name, neighborhood and area size.
-        Suitable for investors, landowners and those interested in the field.
-      </p>
-      <button class="close-btn" (click)="toggleInfo()">close</button>
-    </ng-container>
-  </div>
 </div>

@@ -1,11 +1,10 @@
 <div class="background-wrapper">
   <div class="main-content">
-
     <!-- צד שמאל -->
     <div class="center-content">
-      <div class="h">
-        <app-header></app-header>
-      </div>
+  <div class="h" *ngIf="isHomePage">
+  <app-header></app-header>
+  </div>
     <ng-container *ngIf="isHomePage">
   <!-- עטיפה לשורה: כפתורים + גרף -->
   <div class="buttons-and-chart">

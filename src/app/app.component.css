@@ -1,8 +1,11 @@
 html, body {
+  display: flex;
   margin: 0;
   padding: 0;
-  height: 100vh; 
-  width: 500px; 
+   width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .background-wrapper {
@@ -19,12 +22,8 @@ html, body {
   flex-direction: row;
 }
 
-.main-content {
-  display: flex;
-  align-items: flex-start;
-}
 
-/* אזור מרכזי עם כותרת וכפתורים */
+
 .center-content {
   display: flex;
   flex-direction:column;
@@ -53,21 +52,15 @@ html, body {
 .main-content {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: flex-start;
   width: 100%;
-  max-width: 1600px;
-  height: 100%;
+  gap: 100px; /* זה ישים מרווח נעים ביניהם */
 }
 
 .center-content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   flex: 1;
-  gap: 16px;
-  text-align: center;
 }
+
 
 .buttons-and-chart {
   display: flex;
@@ -92,6 +85,7 @@ html, body {
 
 
 .did-you-know-container {
+  display: flex;
   width: 360px;
   max-width: 100%;
   padding-left: 20px;

@@ -149,20 +149,21 @@ export class UserFormComponent implements OnInit {
         area: this.lotSize
       };
 
-      this.result = 'מחשב...';
+      this.result = 'calculate...';
 
       this.http.post<any>('http://127.0.0.1:5000/predict', data).subscribe({
         next: (response) => {
           if (response && response.prediction_shekel !== undefined) {
-            this.result = `Estimated price per meter:₪${response.prediction_shekel.toLocaleString()}`;
+            const totalPrice = response.prediction_shekel *(this.lotSize as number);
+            this.result = `Estimated total price: ₪${totalPrice.toLocaleString()}`;
           } else {
             this.result = 'All fields must be filled in!';
           }
         },
         error: (err) => {
-          console.error('שגיאה בשרת:', err);
-          this.result = 'אירעה שגיאה בעת התחזית מהשרת';
-          console.log("נשלח לשרת:",  this.selectedCity, this.lotSize, this.neighborhoods);
+          console.error('error:', err);
+          this.result = 'An error occurred';
+          console.log("send to the server:",  this.selectedCity, this.lotSize, this.neighborhoods);
 
         }
       });
